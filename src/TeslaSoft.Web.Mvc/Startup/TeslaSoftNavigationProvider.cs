@@ -53,6 +53,14 @@ namespace TeslaSoft.Web.Startup
                         icon: "fas fa-theater-masks",
                         permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Roles)
                     )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.Aspirantes,
+                        L("Aspirantes"),
+                        url: "Aspirantes",
+                        icon: "fas fa-theater-masks",
+                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Aspirantes)
+                    )
                 )
                 .AddItem( // Menu items below is just for demonstration!
                     new MenuItemDefinition(

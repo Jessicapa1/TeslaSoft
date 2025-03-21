@@ -82,6 +82,8 @@ namespace TeslaSoft.Web.Startup
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            AppContext.SetSwitch("Npgsql.EnableLegacyCaseInsensitiveDbParameters", true);
             app.UseAbp(); // Initializes ABP framework.
 
             if (env.IsDevelopment())

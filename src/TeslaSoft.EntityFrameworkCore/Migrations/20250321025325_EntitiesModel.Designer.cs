@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TeslaSoft.EntityFrameworkCore;
@@ -11,9 +12,11 @@ using TeslaSoft.EntityFrameworkCore;
 namespace TeslaSoft.Migrations
 {
     [DbContext(typeof(TeslaSoftDbContext))]
-    partial class TeslaSoftDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250321025325_EntitiesModel")]
+    partial class EntitiesModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,7 +66,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpEditions", (string)null);
+                    b.ToTable("AbpEditions");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.FeatureSetting", b =>
@@ -99,7 +102,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpFeatures", (string)null);
+                    b.ToTable("AbpFeatures");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("FeatureSetting");
 
@@ -179,7 +182,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpAuditLogs", (string)null);
+                    b.ToTable("AbpAuditLogs");
                 });
 
             modelBuilder.Entity("Abp.Authorization.PermissionSetting", b =>
@@ -215,7 +218,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpPermissions", (string)null);
+                    b.ToTable("AbpPermissions");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("PermissionSetting");
 
@@ -255,7 +258,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "ClaimType");
 
-                    b.ToTable("AbpRoleClaims", (string)null);
+                    b.ToTable("AbpRoleClaims");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserAccount", b =>
@@ -316,7 +319,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "UserName");
 
-                    b.ToTable("AbpUserAccounts", (string)null);
+                    b.ToTable("AbpUserAccounts");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserClaim", b =>
@@ -352,7 +355,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "ClaimType");
 
-                    b.ToTable("AbpUserClaims", (string)null);
+                    b.ToTable("AbpUserClaims");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserLogin", b =>
@@ -390,7 +393,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "LoginProvider", "ProviderKey");
 
-                    b.ToTable("AbpUserLogins", (string)null);
+                    b.ToTable("AbpUserLogins");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserLoginAttempt", b =>
@@ -439,7 +442,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenancyName", "UserNameOrEmailAddress", "Result");
 
-                    b.ToTable("AbpUserLoginAttempts", (string)null);
+                    b.ToTable("AbpUserLoginAttempts");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserOrganizationUnit", b =>
@@ -474,7 +477,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserOrganizationUnits", (string)null);
+                    b.ToTable("AbpUserOrganizationUnits");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserRole", b =>
@@ -508,7 +511,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserRoles", (string)null);
+                    b.ToTable("AbpUserRoles");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Users.UserToken", b =>
@@ -546,7 +549,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpUserTokens", (string)null);
+                    b.ToTable("AbpUserTokens");
                 });
 
             modelBuilder.Entity("Abp.BackgroundJobs.BackgroundJobInfo", b =>
@@ -592,7 +595,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("IsAbandoned", "NextTryTime");
 
-                    b.ToTable("AbpBackgroundJobs", (string)null);
+                    b.ToTable("AbpBackgroundJobs");
                 });
 
             modelBuilder.Entity("Abp.Configuration.Setting", b =>
@@ -636,7 +639,7 @@ namespace TeslaSoft.Migrations
                     b.HasIndex("TenantId", "Name", "UserId")
                         .IsUnique();
 
-                    b.ToTable("AbpSettings", (string)null);
+                    b.ToTable("AbpSettings");
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicEntityProperty", b =>
@@ -664,7 +667,7 @@ namespace TeslaSoft.Migrations
                     b.HasIndex("EntityFullName", "DynamicPropertyId", "TenantId")
                         .IsUnique();
 
-                    b.ToTable("AbpDynamicEntityProperties", (string)null);
+                    b.ToTable("AbpDynamicEntityProperties");
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicEntityPropertyValue", b =>
@@ -692,7 +695,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("DynamicEntityPropertyId");
 
-                    b.ToTable("AbpDynamicEntityPropertyValues", (string)null);
+                    b.ToTable("AbpDynamicEntityPropertyValues");
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicProperty", b =>
@@ -724,7 +727,7 @@ namespace TeslaSoft.Migrations
                     b.HasIndex("PropertyName", "TenantId")
                         .IsUnique();
 
-                    b.ToTable("AbpDynamicProperties", (string)null);
+                    b.ToTable("AbpDynamicProperties");
                 });
 
             modelBuilder.Entity("Abp.DynamicEntityProperties.DynamicPropertyValue", b =>
@@ -749,7 +752,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("DynamicPropertyId");
 
-                    b.ToTable("AbpDynamicPropertyValues", (string)null);
+                    b.ToTable("AbpDynamicPropertyValues");
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityChange", b =>
@@ -786,7 +789,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("EntityTypeFullName", "EntityId");
 
-                    b.ToTable("AbpEntityChanges", (string)null);
+                    b.ToTable("AbpEntityChanges");
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityChangeSet", b =>
@@ -839,7 +842,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "UserId");
 
-                    b.ToTable("AbpEntityChangeSets", (string)null);
+                    b.ToTable("AbpEntityChangeSets");
                 });
 
             modelBuilder.Entity("Abp.EntityHistory.EntityPropertyChange", b =>
@@ -882,7 +885,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("EntityChangeId");
 
-                    b.ToTable("AbpEntityPropertyChanges", (string)null);
+                    b.ToTable("AbpEntityPropertyChanges");
                 });
 
             modelBuilder.Entity("Abp.Localization.ApplicationLanguage", b =>
@@ -938,7 +941,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpLanguages", (string)null);
+                    b.ToTable("AbpLanguages");
                 });
 
             modelBuilder.Entity("Abp.Localization.ApplicationLanguageText", b =>
@@ -988,7 +991,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "Source", "LanguageName", "Key");
 
-                    b.ToTable("AbpLanguageTexts", (string)null);
+                    b.ToTable("AbpLanguageTexts");
                 });
 
             modelBuilder.Entity("Abp.Notifications.NotificationInfo", b =>
@@ -1049,7 +1052,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpNotifications", (string)null);
+                    b.ToTable("AbpNotifications");
                 });
 
             modelBuilder.Entity("Abp.Notifications.NotificationSubscriptionInfo", b =>
@@ -1096,7 +1099,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "NotificationName", "EntityTypeName", "EntityId", "UserId");
 
-                    b.ToTable("AbpNotificationSubscriptions", (string)null);
+                    b.ToTable("AbpNotificationSubscriptions");
                 });
 
             modelBuilder.Entity("Abp.Notifications.TenantNotificationInfo", b =>
@@ -1146,7 +1149,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId");
 
-                    b.ToTable("AbpTenantNotifications", (string)null);
+                    b.ToTable("AbpTenantNotifications");
                 });
 
             modelBuilder.Entity("Abp.Notifications.UserNotificationInfo", b =>
@@ -1178,7 +1181,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("UserId", "State", "CreationTime");
 
-                    b.ToTable("AbpUserNotifications", (string)null);
+                    b.ToTable("AbpUserNotifications");
                 });
 
             modelBuilder.Entity("Abp.Organizations.OrganizationUnit", b =>
@@ -1232,7 +1235,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "Code");
 
-                    b.ToTable("AbpOrganizationUnits", (string)null);
+                    b.ToTable("AbpOrganizationUnits");
                 });
 
             modelBuilder.Entity("Abp.Organizations.OrganizationUnitRole", b =>
@@ -1267,7 +1270,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "RoleId");
 
-                    b.ToTable("AbpOrganizationUnitRoles", (string)null);
+                    b.ToTable("AbpOrganizationUnitRoles");
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookEvent", b =>
@@ -1297,7 +1300,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpWebhookEvents", (string)null);
+                    b.ToTable("AbpWebhookEvents");
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookSendAttempt", b =>
@@ -1331,7 +1334,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("WebhookEventId");
 
-                    b.ToTable("AbpWebhookSendAttempts", (string)null);
+                    b.ToTable("AbpWebhookSendAttempts");
                 });
 
             modelBuilder.Entity("Abp.Webhooks.WebhookSubscriptionInfo", b =>
@@ -1368,7 +1371,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AbpWebhookSubscriptions", (string)null);
+                    b.ToTable("AbpWebhookSubscriptions");
                 });
 
             modelBuilder.Entity("TeslaSoft.Authorization.Roles.Role", b =>
@@ -1443,7 +1446,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "NormalizedName");
 
-                    b.ToTable("AbpRoles", (string)null);
+                    b.ToTable("AbpRoles");
                 });
 
             modelBuilder.Entity("TeslaSoft.Authorization.Users.User", b =>
@@ -1571,7 +1574,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "NormalizedUserName");
 
-                    b.ToTable("AbpUsers", (string)null);
+                    b.ToTable("AbpUsers");
                 });
 
             modelBuilder.Entity("TeslaSoft.EntityFrameworkCore.Aspirantes", b =>
@@ -1631,7 +1634,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("LicenciasId");
 
-                    b.ToTable("Aspirantes", (string)null);
+                    b.ToTable("Aspirantes");
                 });
 
             modelBuilder.Entity("TeslaSoft.EntityFrameworkCore.Categorias", b =>
@@ -1671,7 +1674,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categorias", (string)null);
+                    b.ToTable("Categorias");
                 });
 
             modelBuilder.Entity("TeslaSoft.EntityFrameworkCore.Licencias", b =>
@@ -1722,7 +1725,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("LicenciasId");
 
-                    b.ToTable("Licencias", (string)null);
+                    b.ToTable("Licencias");
                 });
 
             modelBuilder.Entity("TeslaSoft.EntityFrameworkCore.Licencias_Categoriass", b =>
@@ -1772,7 +1775,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("LicenciasId");
 
-                    b.ToTable("Licencias_Categoriass", (string)null);
+                    b.ToTable("Licencias_Categoriass");
                 });
 
             modelBuilder.Entity("TeslaSoft.EntityFrameworkCore.Licencias_Restricciones", b =>
@@ -1822,7 +1825,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("RestriccionesId");
 
-                    b.ToTable("Licencias_Restricciones", (string)null);
+                    b.ToTable("Licencias_Restricciones");
                 });
 
             modelBuilder.Entity("TeslaSoft.EntityFrameworkCore.Restricciones", b =>
@@ -1862,7 +1865,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Restricciones", (string)null);
+                    b.ToTable("Restricciones");
                 });
 
             modelBuilder.Entity("TeslaSoft.MultiTenancy.Tenant", b =>
@@ -1926,7 +1929,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenancyName");
 
-                    b.ToTable("AbpTenants", (string)null);
+                    b.ToTable("AbpTenants");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -1938,7 +1941,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("EditionId", "Name");
 
-                    b.ToTable("AbpFeatures", (string)null);
+                    b.ToTable("AbpFeatures");
 
                     b.HasDiscriminator().HasValue("EditionFeatureSetting");
                 });
@@ -1949,7 +1952,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("TenantId", "Name");
 
-                    b.ToTable("AbpFeatures", (string)null);
+                    b.ToTable("AbpFeatures");
 
                     b.HasDiscriminator().HasValue("TenantFeatureSetting");
                 });
@@ -1963,7 +1966,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AbpPermissions", (string)null);
+                    b.ToTable("AbpPermissions");
 
                     b.HasDiscriminator().HasValue("RolePermissionSetting");
                 });
@@ -1977,7 +1980,7 @@ namespace TeslaSoft.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AbpPermissions", (string)null);
+                    b.ToTable("AbpPermissions");
 
                     b.HasDiscriminator().HasValue("UserPermissionSetting");
                 });

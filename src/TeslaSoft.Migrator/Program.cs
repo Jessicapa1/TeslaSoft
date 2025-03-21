@@ -17,6 +17,8 @@ namespace TeslaSoft.Migrator
 
             using (var bootstrapper = AbpBootstrapper.Create<TeslaSoftMigratorModule>())
             {
+                AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+                AppContext.SetSwitch("Npgsql.EnableLegacyCaseInsensitiveDbParameters", true);
                 bootstrapper.IocManager.IocContainer
                     .AddFacility<LoggingFacility>(
                         f => f.UseAbpLog4Net().WithConfig("log4net.config")
